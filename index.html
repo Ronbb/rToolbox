@@ -28,9 +28,17 @@
 
     </head>
     <body>
-        <div class="container-fluid">
-            <input class="input" id="input-path" type="text">
-            <button id="start" class="btn" onclick="start()">Start</button>
+        <div class="container-fluid mx-auto">
+            <div class="input-group flex-nowarp mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="input-path">file:</span>
+                </div>
+                <input class="form-control" type="text" placeholder="Input Media Path" aria-label="label" aria-describedby="Input Media Path">
+            </div>
+            <div class="btn-group" role="group" aria-label="Button group">
+                <button id="start" class="btn btn-dark" onclick="start()">Start</button>
+            </div>
+            <p id='print' class="text-left"></p>
         </div>
     </body>
 </html>
