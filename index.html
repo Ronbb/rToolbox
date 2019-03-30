@@ -26,13 +26,14 @@
             crossorigin="anonymous"></script>
         <script src="./window.js"></script>
         <script src="./ff-opt.js"></script>
+        <script src="./notification.js"></script>
         <script src="./event.js"></script>
     </head>
     <body>
         <div class="container-fluid mx-auto">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">File</span>
+                    <span class="input-group-text">Input</span>
                 </div>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input"
@@ -40,9 +41,20 @@
                     <label class="custom-file-label text-truncate" id="input-file-label" for="input-file">Input Media File</label>
                 </div>
             </div>
-            <div class="btn-group" role="group" aria-label="Button group">
-                <button id="start" class="btn btn-dark" onclick="start()">Start</button>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Output</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input"
+                        id="output-file">
+                    <label class="custom-file-label text-truncate" id="output-file-label" for="output-file">Output Media File</label>
+                </div>
             </div>
+            <div class="btn-group" role="group" aria-label="Button group">
+                <button id="start" class="btn btn-dark">Start</button>
+            </div>
+
             <p id='print' class="text-left"></p>
         </div>
     </body>
