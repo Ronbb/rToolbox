@@ -2,22 +2,27 @@
 
 const os = require('os')
 const {spawn} = require('child_process')
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path.replace('app.asar', 'app.asar.unpacked');
 
 start = function () {
-  ff = spawn('ffmpeg', ['-y','-i','/Users/ronbb/Desktop/233.mp4','/Users/ronbb/Desktop/234.mp4'])
-  area=document.getElementById('print');
+  parseOption()
+  console.log(ffmpegPath)
+  var text =''
+  ff = spawn(ffmpegPath, ffmpegOptions)
+  area = document.getElementById('print')
   ff.stdout.on('data', (data) => {
-    area.innerText=`${data}`;
+      text += data 
+    area.innerText = text
   })
   ff.stderr.on('data', (data) => {
-    area.innerText=`${data}`;
-  });
-  
+    text += data 
+    area.innerText = text
+  })
+
   ff.on('close', (code) => {
-    alert(`${code}`);
-  });
+    alert(`${code}`)
+  })
 }
 
 $(() => {
-
 })

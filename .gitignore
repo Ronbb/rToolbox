@@ -2,3 +2,8 @@
 /typings/
 /node_modules/
 typings.json
+yarn-error.log
+yarn.lock
+.vscode
+dist
+ffmpeg

@@ -23,6 +23,7 @@ app.once('ready',()=>{
 
     window.once('ready-to-show',()=>{
         window.show()
+        console.log(233333)
     })
 })
 

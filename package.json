@@ -5,10 +5,25 @@
     "repository": "Ronbb/rToolbox",
     "main": "app.js",
     "scripts": {
-        "start": "electron app.js"
+        "start": "electron app.js",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
     },
     "license": "ISC",
     "devDependencies": {
-        "electron": "^3.1.7"
+        "electron": "^4.1.3",
+        "electron-builder": "^20.39.0"
+    },
+    "dependencies": {
+        "@ffmpeg-installer/ffmpeg": "^1.0.17"
+    },
+    "author": {
+        "name": "ronbb"
+    },
+    "build": {
+        "appId": "com.electron.${name}",
+        "mac": {
+            "category": "public.app-category.video"
+        }
     }
 }
