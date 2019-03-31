@@ -55,6 +55,7 @@ $(document).ready(() => {
     })
 
     ffmpeg.on('close', (code) => {
+        delete text
         ffmpegCloseNotification = new Notification('FFmpeg finished',{
             body:'Exit with code ' + code
         })

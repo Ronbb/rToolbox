@@ -11,13 +11,13 @@ var ffmpegOptions = []
 var ffmpegOptionsString = ''
 
 // test & default
-inputFile = '/Users/ronbb/Desktop/233.mp4'
+//inputFile = '/Users/ronbb/Desktop/233.mp4'
 // outputFile = '/Users/ronbb/Desktop/234.mp4'
 globalOptions = {
   '-y': '',
   '-hide_banner': '',
-  //'-loglevel': 'panic',
-  //'-stats': ''
+ '-loglevel': 'info',
+ '-stats': ''
 }
 inputOptions = {
   '-ss': 5,
@@ -29,6 +29,7 @@ outputOptions = {
 
 // ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...
 parseOption = function () {
+  ffmpegOptions = []
   for (const key in globalOptions) {
     if (globalOptions.hasOwnProperty(key)) {
       const element = globalOptions[key]
@@ -62,15 +63,16 @@ parseOption = function () {
   }
 
   ffmpegOptions.push(outputFile)
+  console.log(ffmpegOptions)
 }
 
-getOptionString = function(){
-    var str = ''
-    for (const iterator of ffmpegOptions) {
-      str += iterator
-      str += ' '
-    }
-    console.log(str)
-    ffmpegOptionsString = str
+getOptionString = function () {
+  ffmpegOptionsString = ''
+  var str = ''
+  for (const iterator of ffmpegOptions) {
+    str += iterator
+    str += ' '
+  }
+  console.log(str)
+  ffmpegOptionsString = str
 }
-
