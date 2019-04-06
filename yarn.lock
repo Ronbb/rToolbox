@@ -1889,7 +1889,7 @@ bootstrap-vue@^2.0.0-rc.16:
 
 bootstrap@^4.3.1:
   version "4.3.1"
-  resolved "http://registry.npm.taobao.org/bootstrap/download/bootstrap-4.3.1.tgz#280ca8f610504d99d7b6b4bfc4b68cec601704ac"
+  resolved "http://registry.npm.taobao.org/bootstrap/download/bootstrap-4.3.1.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fbootstrap%2Fdownload%2Fbootstrap-4.3.1.tgz#280ca8f610504d99d7b6b4bfc4b68cec601704ac"
   integrity sha1-KAyo9hBQTZnXtrS/xLaM7GAXBKw=
 
 boxen@^1.2.1:
@@ -10811,7 +10811,7 @@ vue-template-es2015-compiler@^1.9.0:
 
 vue@^2.6.10:
   version "2.6.10"
-  resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.10.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fvue%2Fdownload%2Fvue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
+  resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha1-pysaQqTYKnIepDjRtr9V5mGVxjc=
 
 vuex-electron@^1.0.0:
