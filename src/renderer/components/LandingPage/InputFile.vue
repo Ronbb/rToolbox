@@ -1,15 +1,18 @@
 <template>
   <div>
-    <b-form-file v-model="file"
+    <div class="mx-1 my-3">
+      <b-form-file v-model="file"
                  placeholder="Choose a input file..."
                  drop-placeholder="Drop input file here..."></b-form-file>
-    <div v-if="inputFileInfo">
+    </div>
+    <div v-if="info">
       <div class="mt-2">
-        <b-button visible="true" v-b-toggle.collapse-1
+        <b-button v-b-toggle.collapse-1
+                  variant="info"
                   class="m-1">Format</b-button>
-        <b-collapse id="collapse-1">
+        <b-collapse visible id="collapse-1">
           <b-card>
-            <li v-for="(value, key) in inputFileInfo.format" :key="key.id">
+            <li v-for="(value, key) in info.format" :key="key.id">
               {{key}}: {{value}}
             </li>
           </b-card>
@@ -17,9 +20,10 @@
       </div>
       <div class="mt-2">
         <b-button v-b-toggle.collapse-2
+                  variant="info"
                   class="m-1">Stream</b-button>
         <b-collapse id="collapse-2">
-          <b-card v-for="stream in inputFileInfo.streams" :key="stream.id">
+          <b-card v-for="stream in info.streams" :key="stream.id">
             <li v-for="(value, key) in stream" :key="key.id">
               {{key}}: {{value}}
             </li>
@@ -31,13 +35,13 @@
 </template>
 
 <script>
-import Global_ from '@/components/Utils/Global_'
+import { mapState, mapActions } from 'vuex'
 import { execSync } from 'child_process'
 export default {
   data () {
     return {
       file: null,
-      inputFileInfo: null
+      info: null
     }
   },
   methods: {},
@@ -45,31 +49,31 @@ export default {
   watch: {
     file: function () {
       if (!this.file) return
-      Global_.InputFile = this.file
+      this.$store.dispatch('_global/updateInputFile', this.file)
       console.log(this.file.path)
-      var info = JSON.parse(
+      this.info = JSON.parse(
         execSync(
           `static/ffprobe ${this.file.path} -print_format json -show_format -show_streams -v 0 `,
           { encoding: 'utf-8' }
         )
       )
-      console.log(info)
-      this.inputFileInfo = info
-      for (const key in info.format) {
-        if (info.format.hasOwnProperty(key)) {
-          const element = info.format[key]
-          console.log(key)
-          console.log(element)
-        }
-      }
+      this.inputFileInfo = this.info
+      this.$store.dispatch('_global/updateInputFileInfo', this.info)
     }
   }
 }
 </script>
 
 <style>
-li {
-  font-size: 0.8rem
+.card li {
+  font-size: 0.8rem;
 }
+.custom-file-label {
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: auto;
+  text-overflow: ellipsis;
+}
+
 </style>
 

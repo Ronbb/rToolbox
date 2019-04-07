@@ -1,13 +1,18 @@
 <template>
   <b-container fluid>
-    <b-row class="mt-4"> 
+    <b-row class="my-4 mx-1"> 
       <b-col>
         <b-card border-variant="info" title="Input">
           <input-file></input-file>
         </b-card>
       </b-col>
       <b-col>
-
+        <b-card  border-variant="info" title="Option">
+          <ffmpeg-option></ffmpeg-option>
+        </b-card>
+        <b-card  border-variant="info" class="mt-4" title="Output">
+          <output-file></output-file>
+        </b-card>
       </b-col>
     </b-row>
   </b-container>
@@ -16,15 +21,17 @@
 <script>
 // import Global_ from './Utils/Global_.vue'
 import InputFile from './LandingPage/InputFile'
+import FfmpegOption from './LandingPage/FFmpegOption'
+import OutputFile from './LandingPage/OutputFile'
 
 export default {
   name: 'landing-page',
-  components: { InputFile },
-  methods: {
-    open (link) {
-      this.$electron.shell.openExternal(link)
-    }
+  components: {
+    InputFile,
+    FfmpegOption,
+    OutputFile
   },
+  methods: {},
   data () {
     return {
       file: null
@@ -42,8 +49,9 @@ export default {
   padding: 0;
 }
 
-body {
+* {
   font-family: 'Source Sans Pro', sans-serif;
+  background-color: white;
 }
 
 
