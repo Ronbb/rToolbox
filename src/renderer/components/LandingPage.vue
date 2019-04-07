@@ -1,11 +1,16 @@
 <template>
-  <div id="wrapper">
-    <main>
-      <input-file></input-file>
+  <b-container fluid>
+    <b-row class="mt-4"> 
+      <b-col>
+        <b-card border-variant="info" title="Input">
+          <input-file></input-file>
+        </b-card>
+      </b-col>
+      <b-col>
 
-      <p>OK</p>
-    </main>
-  </div>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -41,18 +46,5 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-#wrapper {
-  height: 100vh;
-  padding: 60px 80px;
-  width: 100vw;
-}
 
-main {
-  display: flex;
-  justify-content: space-between;
-}
-
-main > div {
-  flex-basis: 50%;
-}
 </style>

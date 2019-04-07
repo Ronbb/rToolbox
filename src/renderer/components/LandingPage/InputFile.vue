@@ -1,13 +1,11 @@
 <template>
   <div>
     <b-form-file v-model="file"
-                 :state="Boolean(file)"
                  placeholder="Choose a input file..."
                  drop-placeholder="Drop input file here..."></b-form-file>
-    <div class="mt-3">Selected file: {{ file ? file.name : '' }}</div>
     <div v-if="inputFileInfo">
-      <div class="m-2">
-        <b-button visible v-b-toggle.collapse-1
+      <div class="mt-2">
+        <b-button visible="true" v-b-toggle.collapse-1
                   class="m-1">Format</b-button>
         <b-collapse id="collapse-1">
           <b-card>
@@ -17,8 +15,8 @@
           </b-card>
         </b-collapse>
       </div>
-      <div class="m-2">
-        <b-button visible v-b-toggle.collapse-2
+      <div class="mt-2">
+        <b-button v-b-toggle.collapse-2
                   class="m-1">Stream</b-button>
         <b-collapse id="collapse-2">
           <b-card v-for="stream in inputFileInfo.streams" :key="stream.id">
@@ -68,3 +66,10 @@ export default {
   }
 }
 </script>
+
+<style>
+li {
+  font-size: 0.8rem
+}
+</style>
+
