@@ -53,7 +53,7 @@ export default {
       console.log(this.file.path)
       this.info = JSON.parse(
         execSync(
-          `static/ffprobe ${this.file.path} -print_format json -show_format -show_streams -v 0 `,
+          `static/ffprobe ${this.file.path.trim().replace(/\s+/g, '\\ ')} -print_format json -show_format -show_streams -v 0 `,
           { encoding: 'utf-8' }
         )
       )
