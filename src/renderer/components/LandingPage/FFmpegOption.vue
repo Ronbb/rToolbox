@@ -29,12 +29,7 @@ export default {
       return this.$store.state._global.inputFileInfo
     }
   },
-  watch: {
-    inputFileInfo: function () {
-      console.log(this.inputFileInfo)
-      console.log(this.inputFileInfo.format)
-    }
-  }
+  watch: {}
 }
 </script>
 
