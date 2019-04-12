@@ -40,8 +40,8 @@ import { execSync } from 'child_process'
 export default {
   data () {
     return {
-      file: null,
-      info: null
+      file: this.$store.state._global.inputFile,
+      info: this.$store.state._global.inputFileInfo
     }
   },
   methods: {},

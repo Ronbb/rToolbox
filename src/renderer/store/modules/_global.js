@@ -10,24 +10,24 @@ const state = {
       '-hide_banner': null
     },
     inputOptions: {
-      '-ss': null,
-      '-to': null
+      '-ss': '',
+      '-to': ''
     },
     outputOptions: {
       /* Video Options */
-      '-r': null, // fps
-      '-s': null, // resolution
-      '-c:v': null, // codec for video
-      '-b:v': null, // bitrate for video, default value is 200K.
-      '-bt': null, // bitrate tolerance: 1-pass mode only for video.
-      '-crf': null,
-      '-pix_fmt': null,
+      '-r': '', // fps
+      '-s': '', // resolution
+      '-c:v': '', // codec for video
+      '-b:v': '', // bitrate for video, default value is 200K.
+      '-bt': '', // bitrate tolerance: 1-pass mode only for video.
+      '-crf': '',
+      '-pix_fmt': '',
       '-copyinkf': null,
       /* Audio Options */
-      '-ar': null, // freq
+      '-ar': '', // freq
       // 'q:a': null,
-      '-b:a': null, // (-ab) bitrate for video, default value is 128K.
-      '-ac': null // channels
+      '-b:a': '', // (-ab) bitrate for video, default value is 128K.
+      '-ac': '' // channels
     }
   }
 }
