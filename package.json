@@ -24,6 +24,8 @@
   "build": {
     "productName": "rtoolbox",
     "appId": "com.ronbb.rtoolbox",
+    "compression": "store",
+    "asar": false,
     "directories": {
       "output": "build"
     },

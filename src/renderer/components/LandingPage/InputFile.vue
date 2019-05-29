@@ -5,6 +5,7 @@
                  placeholder="Choose a input file..."
                  drop-placeholder="Drop input file here..."></b-form-file>
     </div>
+    <b-alert show>{{ showerror }}</b-alert>
     <div v-if="info">
       <div class="mt-2">
         <b-button v-b-toggle.collapse-1
@@ -36,12 +37,15 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { execSync } from 'child_process'
+import { execSync, execFileSync } from 'child_process'
+import path from 'path'
+import { platform, arch } from 'os'
 export default {
   data () {
     return {
       file: this.$store.state._global.inputFile,
-      info: this.$store.state._global.inputFileInfo
+      info: this.$store.state._global.inputFileInfo,
+      showerror: 'no error'
     }
   },
   methods: {},
@@ -51,12 +55,20 @@ export default {
       if (!this.file) return
       this.$store.dispatch('_global/updateInputFile', this.file)
       console.log(this.file.path)
-      this.info = JSON.parse(
-        execSync(
-          `static/ffprobe ${this.file.path.trim().replace(/\s+/g, '\\ ')} -print_format json -show_format -show_streams -v 0 `,
-          { encoding: 'utf-8' }
+      var ffprobePath = process.env.NODE_ENV !== 'development' ? `${global.__static}/ffprobe` : 'static/ffprobe'
+      try {
+        this.info = JSON.parse(
+          execFileSync(
+            ffprobePath,
+            [this.file.path.trim().replace(/\s+/g, '\\ '), '-print_format', 'json', '-show_format', '-show_streams', '-v', '0'],
+            { encoding: 'utf-8' }
+          )
         )
-      )
+      } catch (error) {
+        this.showerror = error
+        alert(error)
+      }
+
       this.inputFileInfo = this.info
       this.$store.dispatch('_global/updateInputFileInfo', this.info)
     }

@@ -3,31 +3,113 @@ const state = {
   inputFileInfo: null,
   outputFile: null,
   outputFileInfo: null,
+  options: null,
   // ffmpeg [ global_options ] {[ input_file_options ] -i input_url} ... {[ output_file_options ]output_url} ...
   ffmpegOptions: {
     globalOptions: {
-      '-y': null,
-      '-hide_banner': null
+      overWrite: {
+        command: ['-y', '-n'],
+        parameter: '0',
+        type: 'boolean',
+        haveParameter: false
+      },
+      hideBanner: {
+        command: ['-hide_banner', ''],
+        parameter: '0',
+        type: 'boolean',
+        haveParameter: false
+      }
     },
     inputOptions: {
-      '-ss': '',
-      '-to': ''
+      startingTime: {
+        command: '-ss',
+        parameter: '',
+        type: 'string',
+        haveParameter: true
+      },
+      endTime: {
+        command: '-to',
+        parameter: '',
+        type: 'string',
+        haveParameter: true
+      }
     },
     outputOptions: {
       /* Video Options */
-      '-r': '', // fps
-      '-s': '', // resolution
-      '-c:v': '', // codec for video
-      '-b:v': '', // bitrate for video, default value is 200K.
-      '-bt': '', // bitrate tolerance: 1-pass mode only for video.
-      '-crf': '',
-      '-pix_fmt': '',
-      '-copyinkf': null,
+      fps: {
+        command: '-r',
+        parameter: '',
+        type: 'number',
+        haveParameter: true
+      }, // fps
+      resolution: {
+        command: '-s',
+        parameter: '',
+        type: 'string',
+        haveParameter: true
+      }, // resolution
+      videoCodec: {
+        command: '-c:v',
+        parameter: '',
+        type: 'string',
+        haveParameter: true
+      }, // codec for video
+      videoBitrate: {
+        command: '-s',
+        parameter: '',
+        type: 'string',
+        haveParameter: true
+      }, // bitrate for video, default value is 200K.
+      videoBitrateTolerance: {
+        command: '-bt:v',
+        parameter: '',
+        type: 'string',
+        haveParameter: true
+      }, // bitrate tolerance: 1-pass mode only for video.
+      constantRateFactor: {
+        command: '-crf',
+        parameter: '',
+        type: 'number',
+        haveParameter: true
+      }, // 16-23 lower is better.
+      pixelFormat: {
+        command: '-pix_fmt',
+        parameter: '',
+        type: 'string',
+        haveParameter: true
+      },
+      copyInkf: {
+        command: ['-copyinkf', ''],
+        parameter: '',
+        type: 'boolean',
+        haveParameter: false
+      },
       /* Audio Options */
-      '-ar': '', // freq
+      audioSampleRate: {
+        command: '-ar',
+        parameter: '',
+        type: 'string',
+        haveParameter: true
+      }, // freq
+      audioCodec: {
+        command: '-c:a',
+        parameter: '',
+        type: 'string',
+        haveParameter: true
+      }, // codec for audio
       // 'q:a': null,
-      '-b:a': '', // (-ab) bitrate for video, default value is 128K.
-      '-ac': '' // channels
+      audioBitrate: {
+        command: '-b:a',
+        parameter: '',
+        type: 'string',
+        haveParameter: true
+      }, // (-ab) bitrate for video, default value is 128K.
+      audioChannels: {
+        command: '-ac',
+        parameter: '',
+        type: 'number',
+        haveParameter: true
+      } // channels
     }
   }
 }
@@ -44,10 +126,23 @@ const mutations = {
   },
   OUTPUTFILEINFO (state, info) {
     state.outputFileInfo = info
+  },
+  FFMPEGOPTIONS (state, options) {
+    state.ffmpegOptions = options
+  },
+  OPTIONS (state, options) {
+    state.options = options
   }
 }
 
-const getters = {}
+const getters = {
+  getInputFileInfo: function (state) {
+    return state.inputFileInfo
+  },
+  getFFmpegOptions: function (state) {
+    return state.ffmpegOptions
+  }
+}
 
 const actions = {
   updateInputFile ({ commit, state }, file) {
@@ -69,6 +164,14 @@ const actions = {
     // do something async
     console.log(state)
     commit('OUTPUTFILEINFO', info)
+  },
+  updateFFmpegOptions ({ commit, state }, options) {
+    console.log(state)
+    commit('FFMPEGOPTIONS', options)
+  },
+  updateOptions ({ commit, state }, options) {
+    console.log(state)
+    commit('OPTIONS', options)
   }
 }
 
