@@ -56,11 +56,13 @@ export default {
       this.$store.dispatch('_global/updateInputFile', this.file)
       console.log(this.file.path)
       var ffprobePath = process.env.NODE_ENV !== 'development' ? `${global.__static}/ffprobe` : 'static/ffprobe'
+      ffprobePath += process.platform === 'win32' ? '.exe' : ''
+      var inputFileName = process.platform === 'win32' ? this.file.path.trim() : this.file.path.trim().replace(/\s+/g, '\\ ')
       try {
         this.info = JSON.parse(
           execFileSync(
             ffprobePath,
-            [this.file.path.trim().replace(/\s+/g, '\\ '), '-print_format', 'json', '-show_format', '-show_streams', '-v', '0'],
+            [inputFileName, '-print_format', 'json', '-show_format', '-show_streams', '-v', '0'],
             { encoding: 'utf-8' }
           )
         )

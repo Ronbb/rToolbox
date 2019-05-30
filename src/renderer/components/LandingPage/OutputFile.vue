@@ -36,6 +36,7 @@ export default {
       }
       this.$store.dispatch('_global/updateOutputFile', this.outputFile)
       var ffmpegPath = process.env.NODE_ENV !== 'development' ? `${global.__static}/ffmpeg` : 'static/ffmpeg'
+      ffmpegPath += process.platform === 'win32' ? '.exe' : ''
       const ffmpeg = execFile(
         ffmpegPath,
         this.options
@@ -64,7 +65,9 @@ export default {
       if (!_options) {
         return 'no options'
       }
-      var _optionsParse = _options.globalOptions.concat(_options.inputOptions, ['-i', this.$store.state._global.inputFile.path], _options.outputOptions, [this.outputFile.trim().replace(/\s+/g, '\\ ')])
+      var inputFileName = process.platform === 'win32' ? this.$store.state._global.inputFile.path.trim() : this.file.path.trim().replace(/\s+/g, '\\ ')
+      var outputFileName = process.platform === 'win32' ? this.outputFile.trim() : this.file.path.trim().replace(/\s+/g, '\\ ')
+      var _optionsParse = _options.globalOptions.concat(_options.inputOptions, ['-i', inputFileName], _options.outputOptions, [outputFileName])
       return _optionsParse
     }
   },
