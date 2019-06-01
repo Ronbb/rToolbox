@@ -65,9 +65,11 @@ export default {
       if (!_options) {
         return 'no options'
       }
-      var inputFileName = process.platform === 'win32' ? this.$store.state._global.inputFile.path.trim() : this.file.path.trim().replace(/\s+/g, '\\ ')
-      var outputFileName = process.platform === 'win32' ? this.outputFile.trim() : this.file.path.trim().replace(/\s+/g, '\\ ')
-      var _optionsParse = _options.globalOptions.concat(_options.inputOptions, ['-i', inputFileName], _options.outputOptions, [outputFileName])
+      if (this.$store.state._global.inputFile && this.file) {
+        var inputFileName = process.platform === 'win32' ? this.$store.state._global.inputFile.path.trim() : this.file.path.trim().replace(/\s+/g, '\\ ')
+        var outputFileName = process.platform === 'win32' ? this.outputFile.trim() : this.file.path.trim().replace(/\s+/g, '\\ ')
+        var _optionsParse = _options.globalOptions.concat(_options.inputOptions, ['-i', inputFileName], _options.outputOptions, [outputFileName])
+      }
       return _optionsParse
     }
   },
