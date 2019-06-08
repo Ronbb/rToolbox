@@ -7,9 +7,9 @@
         <div>
           <b-button v-b-toggle.collapse-3
                     variant="info"
-                    class="m-1">GlobalOpt</b-button>
+                    class="m-1">全局参数</b-button>
           <b-collapse id="collapse-3">
-            <b-card>
+            <b-card class="mx-1 mb-2">
               <b-form-textarea id="input-global-options"
                                no-resize
                                readonly
@@ -21,12 +21,12 @@
         <div>
           <b-button v-b-toggle.collapse-4
                     variant="info"
-                    class="m-1">InputOpt</b-button>
+                    class="m-1">输入参数</b-button>
           <b-collapse id="collapse-4">
-            <b-card>
+            <b-card class="mx-1 mb-2">
               <div>
                 <b-form-group id="fieldset-ss"
-                              description="[-][HH:]MM:SS[.m...] or [-]S+[.m...]"
+                              description="起始时间，格式为[-][HH:]MM:SS[.m...] or [-]S+[.m...]，[]为可省略"
                               label="Starting Time"
                               label-for="input-ss">
                   <b-form-input id="input-ss"
@@ -36,7 +36,7 @@
               </div>
               <div>
                 <b-form-group id="fieldset-to"
-                              description="[-][HH:]MM:SS[.m...] or [-]S+[.m...]"
+                              description="终止时间，格式为[-][HH:]MM:SS[.m...] or [-]S+[.m...]，[]为可省略"
                               label="End Time"
                               label-for="input-to">
                   <b-form-input id="input-to"
@@ -50,11 +50,12 @@
         <div>
           <b-button v-b-toggle.collapse-5
                     variant="info"
-                    class="m-1">OutputOpt</b-button>
+                    class="m-1">输出参数</b-button>
           <b-collapse id="collapse-5">
-            <b-card>
+            <b-card class="mx-1 mb-2">
               <div>
                 <b-form-group id="fieldset-r"
+                description="帧率，如23.976、24、25、29.97、30、50、59.94等"
                               label="Frame Per Second"
                               label-for="input-r">
                   <b-form-input id="input-r"
@@ -64,6 +65,7 @@
               </div>
               <div>
                 <b-form-group id="fieldset-s"
+                description="分辨率，如1920x1080、1280x720等，x为英文小写"
                               label="Resolution"
                               label-for="input-s">
                   <b-form-input id="input-s"
@@ -73,6 +75,7 @@
               </div>
               <div>
                 <b-form-group id="fieldset-cv"
+                description="视频编码器，如x264、prores等。copy为复制流。"
                               label="Video Codec"
                               label-for="input-cv">
                   <b-form-input id="input-cv"
@@ -82,6 +85,7 @@
               </div>
               <div>
                 <b-form-group id="fieldset-bv"
+                description="视频比特率，如2000k、4000k等，单位bps，crf模式下无效"
                               label="Video Bitrate"
                               label-for="input-bv">
                   <b-form-input id="input-bv"
@@ -91,6 +95,7 @@
               </div>
               <div>
                 <b-form-group id="fieldset-crf"
+                description="CRF模式，恒定质量模式，建议16～24之间，越大画质越好"
                               label="Constant Rate Factor"
                               label-for="input-crf">
                   <b-form-input id="input-crf"
@@ -100,6 +105,7 @@
               </div>
               <div>
                 <b-form-group id="fieldset-pixfmt"
+                description="像素格式，例如nv12、yuv422p10le等"
                               label="Pixel Format"
                               label-for="input-pixfmt">
                   <b-form-input id="input-pixfmt"
@@ -109,6 +115,7 @@
               </div>
               <div>
                 <b-form-group id="fieldset-ar"
+                description="音频采样率，如44100、48000等"
                               label="Audio Sample Rate"
                               label-for="input-ar">
                   <b-form-input id="input-ar"
@@ -118,6 +125,7 @@
               </div>
               <div>
                 <b-form-group id="fieldset-ca"
+                description="音频编码器，如aac、mp3等，copy为复制流"
                               label="Audio Codec"
                               label-for="input-ca">
                   <b-form-input id="input-ca"
@@ -127,6 +135,7 @@
               </div>
               <div>
                 <b-form-group id="fieldset-ba"
+                description="音频码率，如192k、320k等，单位bps"
                               label="Audio Bitrate"
                               label-for="input-ba">
                   <b-form-input id="input-ba"
@@ -136,6 +145,7 @@
               </div>
               <div>
                 <b-form-group id="fieldset-ac"
+                description="音频轨道数"
                               label="Audio Channels"
                               label-for="input-ac">
                   <b-form-input id="input-ac"
@@ -147,7 +157,7 @@
           </b-collapse>
         </div>
       </b-form>
-      <b-alert show>{{ ffoptParse }}</b-alert>
+      <b-alert show class="mx-1 my-1">{{ ffoptParse }}</b-alert>
     </div>
   </div>
 </template>

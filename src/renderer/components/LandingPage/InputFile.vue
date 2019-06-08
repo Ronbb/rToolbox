@@ -2,17 +2,17 @@
   <div>
     <div class="mx-1 my-3">
       <b-form-file v-model="file"
-                 placeholder="Choose a input file..."
-                 drop-placeholder="Drop input file here..."></b-form-file>
+                 placeholder="选择或拖入一个文件..."
+                 drop-placeholder="拖到这里..."></b-form-file>
     </div>
-    <b-alert show>{{ showerror }}</b-alert>
+    <b-alert show v-if="showerror!='no error'">{{ showerror }}</b-alert>
     <div v-if="info">
       <div class="mt-2">
         <b-button v-b-toggle.collapse-1
                   variant="info"
-                  class="m-1">Format</b-button>
+                  class="m-1">封装信息</b-button>
         <b-collapse visible id="collapse-1">
-          <b-card>
+          <b-card class="mx-1">
             <li v-for="(value, key) in info.format" :key="key.id">
               {{key}}: {{value}}
             </li>
@@ -22,9 +22,9 @@
       <div class="mt-2">
         <b-button v-b-toggle.collapse-2
                   variant="info"
-                  class="m-1">Stream</b-button>
+                  class="m-1">流信息</b-button>
         <b-collapse id="collapse-2">
-          <b-card v-for="stream in info.streams" :key="stream.id">
+          <b-card class="mx-1" v-for="stream in info.streams" :key="stream.id">
             <li v-for="(value, key) in stream" :key="key.id">
               {{key}}: {{value}}
             </li>

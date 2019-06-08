@@ -2,15 +2,15 @@
   <b-container fluid>
     <b-row class="my-4 mx-1"> 
       <b-col>
-        <b-card border-variant="info" title="Input">
+        <b-card border-variant="info" title="输入">
           <input-file></input-file>
         </b-card>
       </b-col>
       <b-col>
-        <b-card  border-variant="info" title="Option">
+        <b-card  border-variant="info" title="参数">
           <ffmpeg-option></ffmpeg-option>
         </b-card>
-        <b-card  border-variant="info" class="mt-4" title="Output">
+        <b-card  border-variant="info" class="mt-4" title="输出">
           <output-file></output-file>
         </b-card>
       </b-col>

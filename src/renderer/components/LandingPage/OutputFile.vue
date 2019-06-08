@@ -3,17 +3,17 @@
     <div class="mx-1 my-3">
       <b-form-file v-model="directory"
                  directory
-                 placeholder="Choose a output file..."
+                 placeholder="选择一个文件夹..."
                  no-drop></b-form-file>
     </div>
     <div class="mx-1 my-3">
-      <b-form-input v-model="name" placeholder="Enter file name..."></b-form-input>
+      <b-form-input v-model="name" placeholder="输入文件名..."></b-form-input>
     </div>
     <div class="mx-3" v-if="print" id="print">{{ print }}</div>
     <div class="mx-1">
-      <b-button block variant="info" @click="work">Go!!!</b-button>
+      <b-button block variant="info" @click="work">开始吧！！！</b-button>
     </div>
-    <b-alert show>{{ options }}</b-alert>
+    <b-alert show class="mx-1 my-2">{{ options }}</b-alert>
   </div>
 </template>
 
