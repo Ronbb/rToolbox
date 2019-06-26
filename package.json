@@ -1,6 +1,6 @@
 {
   "name": "rtoolbox",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Ronbb <ronbiaobiao@gmail.com>",
   "description": "Ronbb's Toolbox",
   "license": "",
@@ -61,6 +61,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.16",
+    "jquery": "^3.4.1",
     "vue": "^2.6.10",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
